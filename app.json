@@ -1,32 +1,56 @@
 {
   "expo": {
-    "name": "single-origin-two-new",
+    "name": "Single Origin 2",
     "slug": "single-origin-two-new",
-    "version": "1.0.0",
+    "version": "43",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "description": "Learn to brew specialty coffee.",
+    "owner": "jonsamp",
+    "privacy": "unlisted",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#000000"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 3000
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jonsamp.singleorigintwo",
+      "buildNumber": "1"
     },
     "android": {
+      "versionCode": 18,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#000000"
+      },
+      "permissions": [],
+      "package": "com.jonsamp.singleorigintwo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "single-origin",
+            "project": "single-origin-two",
+            "authToken": "7e715ec4e145463cb132c5ba1703878d7af7bd875a0b46fc805342c2da5e1226"
+          }
+        }
+      ]
+    },
+    "plugins": [
+      "sentry-expo"
+    ]
   }
 }
