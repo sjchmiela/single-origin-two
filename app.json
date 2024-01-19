@@ -33,9 +33,6 @@
       "permissions": [],
       "package": "com.jonsamp.singleorigintwo"
     },
-    "plugins": [
-      "sentry-expo"
-    ],
     "runtimeVersion": {
       "policy": "appVersion"
     }
