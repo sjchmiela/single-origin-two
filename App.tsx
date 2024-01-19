@@ -9,7 +9,6 @@ import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-c
 import { enableScreens } from 'react-native-screens';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import * as Sentry from 'sentry-expo';
 import { TailwindProvider } from 'tailwind-rn';
 
 import Navigator from './src/navigation';
@@ -19,12 +18,6 @@ import utilities from './tailwind.json';
 enableScreens();
 
 const { store, persistor } = configureStore();
-
-Sentry.init({
-  dsn: 'https://c9996743bbf04225a864e9b985a8be12@sentry.io/1746780',
-  enableInExpoDevelopment: false,
-  debug: false,
-});
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
