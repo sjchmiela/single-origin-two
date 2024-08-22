@@ -141,8 +141,8 @@ function Log(props: Props) {
           <Text>{log.notes.trim()}</Text>
         </Card>
       ) : null}
-
-      {withReminder && notifications.status !== 'denied' ? (
+      {/* TODO: reenable tasting reminders */}
+      {/* {withReminder && notifications.status !== 'denied' ? (
         <TouchableOpacity onPress={toggleReminder} activeOpacity={0.75}>
           <Card
             containerStyle={tw(
@@ -167,8 +167,8 @@ function Log(props: Props) {
             )}
           </Card>
         </TouchableOpacity>
-      ) : null}
-      {withReminder && notifications.status === 'denied' ? (
+      ) : null} */}
+      {/* {withReminder && notifications.status === 'denied' ? (
         <Card
           containerStyle={tw('mt-4 mb-0 mx-2 p-4 bg-overlay dark:bg-overlay-dark')}
           style={tw('flex-row justify-between')}>
@@ -182,7 +182,7 @@ function Log(props: Props) {
           </View>
           <WarningIcon size={iconSize.small} color={theme.icon.default} />
         </Card>
-      ) : null}
+      ) : null} */}
       <View style={tw('flex-row flex-wrap mt-4')}>
         {logStats.map((stat) => (
           <View style={tw('w-6/12')} key={stat.label}>

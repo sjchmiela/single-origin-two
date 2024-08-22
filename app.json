@@ -33,6 +33,7 @@
     },
     "runtimeVersion": {
       "policy": "appVersion"
-    }
+    },
+    "plugins": ["@logrocket/react-native"]
   }
 }
