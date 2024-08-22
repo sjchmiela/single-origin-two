@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { activateKeepAwakeAsync, deactivateKeepAwakeAsync } from 'expo-keep-awake';
+import { useKeepAwake } from 'expo-keep-awake';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -32,6 +32,7 @@ interface RecipeProps {
 
 function Recipe(props: RecipeProps) {
   const { recipe } = props;
+  useKeepAwake();
   const { settings, unitHelpers } = useSettings();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
@@ -47,14 +48,6 @@ function Recipe(props: RecipeProps) {
     totalVolume: recentLog.totalVolume || recipe.defaultTotalVolume,
     isIced: false,
   });
-
-  useEffect(function didMount() {
-    activateKeepAwakeAsync();
-
-    return function willUnmount() {
-      deactivateKeepAwakeAsync();
-    };
-  }, []);
 
   function setRecipeState({ key, value }: { key: string; value: number | boolean }) {
     _setRecipeState((prevRecipeState) => ({

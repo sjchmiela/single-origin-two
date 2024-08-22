@@ -175,7 +175,7 @@ function SettingsDetail(props: Props) {
         <>
           <Section>
             <SettingWrapper title="Version">
-              <Text>46 (1)</Text>
+              <Text>51 (0)</Text>
             </SettingWrapper>
           </Section>
         </>

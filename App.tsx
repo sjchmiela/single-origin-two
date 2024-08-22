@@ -1,3 +1,4 @@
+import LogRocket from '@logrocket/react-native';
 import * as Device from 'expo-device';
 import * as Font from 'expo-font';
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -5,8 +6,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Animated } from 'react-native';
-import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { TailwindProvider } from 'tailwind-rn';
@@ -23,6 +24,8 @@ export default function App() {
 
   useEffect(() => {
     async function prepare() {
+      LogRocket.init('jon-samp/single-origin');
+
       try {
         const deviceType = await Device.getDeviceTypeAsync();
         if (deviceType === Device.DeviceType.TABLET) {
