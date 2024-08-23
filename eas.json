@@ -9,7 +9,7 @@
       "channel": "preview"
     },
     "production": {
-      "channel": "main",
+      "channel": "production",
       "autoIncrement": true
     },
     "development-simulator": {
@@ -25,7 +25,7 @@
       }
     },
     "production-simulator": {
-      "channel": "main",
+      "channel": "production",
       "ios": {
         "simulator": true
       }
@@ -39,9 +39,5 @@
         "appleTeamId": "NLUVE3B2AS"
       }
     }
-  },
-  "cli": {
-    "version": ">= 0.40.0",
-    "appVersionSource": "remote"
   }
 }
