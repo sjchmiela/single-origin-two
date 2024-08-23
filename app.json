@@ -33,17 +33,6 @@
     },
     "runtimeVersion": {
       "policy": "appVersion"
-    },
-    "plugins": [
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "minSdkVersion": 25
-          }
-        }
-      ],
-      "@logrocket/react-native"
-    ]
+    }
   }
 }

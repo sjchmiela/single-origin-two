@@ -7,5 +7,16 @@ export default ({ config } = {}) => ({
       projectId: process.env.EAS_PROJECT_ID ?? OFFICIAL_PROJECT_ID,
     },
   },
-  plugins: ['expo-font'],
+  plugins: [
+    [
+      'expo-build-properties',
+      {
+        android: {
+          minSdkVersion: 25,
+        },
+      },
+    ],
+    '@logrocket/react-native',
+    'expo-font',
+  ],
 });
