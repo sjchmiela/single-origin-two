@@ -6,6 +6,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { TouchableOpacity, Platform, useColorScheme } from 'react-native';
 
+import BrewIcon from './icons/BrewIcon';
+import LogsIcon from './icons/LogsIcon';
+import SettingsIcon from './icons/SettingsIcon';
 import { defaultTheme, darkTheme } from '../common/theme';
 import { Text } from '../components/Text';
 import type from '../constants/type';
@@ -21,9 +24,6 @@ import Preparation from '../scenes/Preparation';
 import Settings from '../scenes/Settings';
 import SettingsDetail from '../scenes/Settings/SettingsDetail';
 // import Test from '../scenes/Test';
-import BrewIcon from './icons/BrewIcon';
-import LogsIcon from './icons/LogsIcon';
-import SettingsIcon from './icons/SettingsIcon';
 
 export type RootStackParamList = {
   Brew: {
