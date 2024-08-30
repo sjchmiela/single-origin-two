@@ -1,4 +1,4 @@
-const OFFICIAL_PROJECT_ID = '675cb1f0-fa3c-11e8-ac99-6374d9643cb2';
+const OFFICIAL_PROJECT_ID = '323a16ae-570a-46b1-926e-fb4ff5563f02';
 
 export default ({ config } = {}) => ({
   ...config,
