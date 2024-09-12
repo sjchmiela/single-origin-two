@@ -1,0 +1,21 @@
+name: test workflow!
+
+on:
+  push:
+    branches: ['*']
+
+jobs:
+  unit_tests:
+    name: Unit Tests
+    steps:
+      - uses: eas/checkout
+      - uses: eas/install_node_modules
+      - name: Run unit tests
+        run: echo "hello"
+  integration_tests:
+    name: Integration Tests
+    needs: [unit_tests]
+    steps:
+      - uses: eas/checkout
+      - name: Run integration tests
+        run: yarn integration-tests
