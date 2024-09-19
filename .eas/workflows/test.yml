@@ -12,10 +12,18 @@ jobs:
       - uses: eas/install_node_modules
       - name: Run unit tests
         run: echo "hello stanley"
-  integration_tests:
-    name: Integration Tests
+  publish_update:
     needs: [unit_tests]
-    steps:
-      - uses: eas/checkout
-      - name: Run integration tests
-        run: yarn integration-tests
+    type: update
+  build_ios:
+    needs: [unit_tests]
+    type: build
+    params:
+      platform: ios
+      profile: development-simulator
+  build_android:
+    needs: [unit_tests]
+    type: build
+    params:
+      platform: android
+      profile: development-simulator
