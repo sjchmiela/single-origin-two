@@ -3,22 +3,28 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { reminderCancelled, reminderDenied, reminderRequested } from './actions';
 
+// Set up the notification handler
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
 function* scheduleNotification({ timestamp }: { timestamp: number }) {
-  const localNotification = {
-    content: {
-      title: 'Taste your coffee.',
-      body: `Tap here to rate your brew.`,
-      data: { timestamp },
-      ios: { sound: true },
-    },
-    trigger: {
-      seconds: 6 * 60, // 6 minutes
-    },
+  const content = {
+    title: 'Taste your coffee.',
+    body: `Tap here to rate your brew.`,
+    data: { timestamp },
   };
 
-  yield call(cancelAllNotifications);
+  const trigger = {
+    seconds: 6 * 60, // 6 minutes
+  };
 
-  yield call(Notifications.scheduleNotificationAsync, localNotification);
+  yield call(Notifications.cancelAllScheduledNotificationsAsync);
+  yield call(Notifications.scheduleNotificationAsync, { content, trigger });
 }
 
 function* cancelAllNotifications() {
@@ -30,28 +36,27 @@ function* handleReminderRequested({
 }: {
   payload: { timestamp: number };
 }): any {
-  // const {
-  //   permissions: { notifications },
-  // } = yield call(Permissions.getAsync, Permissions.NOTIFICATIONS);
+  try {
+    const { status } = yield call(Notifications.getPermissionsAsync);
 
-  // this only happens if you haven't ever asked or determined in the settings
-  // if (notifications.status !== 'granted') {
-    // const {
-    //   permissions: { notifications: answer },
-    // } = yield call(Permissions.askAsync, Permissions.NOTIFICATIONS);
+    if (status !== 'granted') {
+      const { status: newStatus } = yield call(Notifications.requestPermissionsAsync);
 
-    // if (answer.status !== 'granted') {
-    //   return yield put(reminderDenied());
-    // }
-  // }
+      if (newStatus !== 'granted') {
+        return yield put(reminderDenied());
+      }
+    }
 
-  // yield call(scheduleNotification, { timestamp });
-
-  console.log('Reminder requested', timestamp);
+    yield call(scheduleNotification, { timestamp });
+    console.log('Reminder requested', timestamp);
+  } catch (error) {
+    console.error('Error scheduling notification:', error);
+    yield put(reminderDenied());
+  }
 }
 
 function* handleReminderCancelled() {
-  yield call(cancelAllNotifications);
+  yield call(Notifications.cancelAllScheduledNotificationsAsync);
 }
 
 export default function* rootSaga() {
