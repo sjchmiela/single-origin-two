@@ -10,7 +10,9 @@
     "resizeimages": "mogrify -resize 400 src/**/*.{jpg,png}",
     "postinstall": "patch-package",
     "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
-    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
+    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\"",
+    "build:dev": "npx eas-cli@latest build --profile development --platform all --auto-submit",
+    "build:production": "npx eas-cli@latest build --profile production --platform all --auto-submit"
   },
   "dependencies": {
     "@expo/styleguide-native": "^1.0.4",
