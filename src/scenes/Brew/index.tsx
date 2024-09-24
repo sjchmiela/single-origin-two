@@ -3,9 +3,9 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 import { useTailwind } from 'tailwind-rn';
 
-import { RootStackParamList } from '../../navigation';
 import Recipe from './Recipe';
 import recipes from './recipes';
+import { RootStackParamList } from '../../navigation';
 
 type Props = {
   route: RouteProp<RootStackParamList, 'Brew'>;
