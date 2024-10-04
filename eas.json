@@ -2,32 +2,62 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "image": "latest"
+      },
+      "ios": {
+        "image": "latest"
+      }
     },
     "preview": {
       "distribution": "internal",
-      "channel": "preview"
+      "channel": "preview",
+      "android": {
+        "image": "latest"
+      },
+      "ios": {
+        "image": "latest"
+      }
     },
     "production": {
       "channel": "production",
-      "autoIncrement": true
+      "autoIncrement": true,
+      "android": {
+        "image": "latest"
+      },
+      "ios": {
+        "image": "latest"
+      }
     },
     "development-simulator": {
       "developmentClient": true,
+      "android": {
+        "image": "latest"
+      },
       "ios": {
-        "simulator": true
+        "simulator": true,
+        "image": "latest"
       }
     },
     "preview-simulator": {
       "channel": "preview",
+      "android": {
+        "image": "latest"
+      },
       "ios": {
-        "simulator": true
+        "simulator": true,
+        "image": "latest"
       }
     },
     "production-simulator": {
       "channel": "production",
+      "android": {
+        "image": "latest"
+      },
       "ios": {
-        "simulator": true
+        "simulator": true,
+        "image": "latest"
       }
     }
   },
