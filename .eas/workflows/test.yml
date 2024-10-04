@@ -29,5 +29,4 @@ jobs:
       profile: development-simulator
   say_hello:
     needs: [build_ios, build_android]
-    type: update
     run: echo "hello stanley"
