@@ -20,7 +20,7 @@ function* scheduleNotification({ timestamp }: { timestamp: number }) {
   };
 
   const trigger = {
-    seconds: 6 * 60, // 6 minutes
+    seconds: 6 * 60, // 6 minutes after the reminder is requested
   };
 
   yield call(Notifications.cancelAllScheduledNotificationsAsync);
