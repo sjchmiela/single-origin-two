@@ -14,11 +14,6 @@
       "resizeMode": "cover",
       "backgroundColor": "#000000"
     },
-    "updates": {
-      "enabled": true,
-      "fallbackToCacheTimeout": 3000,
-      "url": "https://u.expo.dev/675cb1f0-fa3c-11e8-ac99-6374d9643cb2"
-    },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
