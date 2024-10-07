@@ -1,0 +1,34 @@
+name: mvp
+
+on:
+  push:
+    branches: ['*']
+
+jobs:
+  fingerprint:
+    type: custom
+    steps:
+      - uses: eas/checkout
+      - uses: eas/install_node_modules
+      - name: Fingerprint
+        run: npx expo-updates fingerprint:generate
+    outputs:
+      fingerprint: ${{ steps.fingerprint.outputs.fingerprint }}
+  eas_build_list:
+    needs: [fingerprint]
+    type: custom
+    steps:
+      - name: List builds
+        run: npx eas build:list --runtimeVersion ${{ needs.fingerprint.outputs.fingerprint }}
+    outputs:
+      builds: ${{ steps.eas_build_list.outputs.builds }}
+  build:
+    needs: [eas_build_list]
+    if: ${{ needs.eas_build_list.outputs.builds = '' }}
+    type: build
+    params:
+      platform: ios
+      profile: development-simulator
+  publish_update:
+    needs: [build]
+    type: update
