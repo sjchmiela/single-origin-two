@@ -16,5 +16,5 @@ jobs:
     needs: [build_android]
     type: maestro_test
     params:
-      build_id: ${{ needs.build_android.outputs.build_id }}
+      build_id: ${{ build_android.outputs.build_id }}
       flow_path: ['./e2e/flow.yaml']
