@@ -1,0 +1,20 @@
+name: end-to-end test
+
+on:
+  push:
+    branches: ['*']
+
+jobs:
+  build_android:
+    type: build
+    params:
+      platform: android
+      profile: development-simulator
+    outputs:
+      build_id: ${{ steps.build.outputs.build_id }}
+  maestro_test:
+    needs: [build_android]
+    type: maestro_test
+    params:
+      build_id: ${{ needs.build_android.outputs.build_id }}
+      flow_path: ['./e2e/flow.yaml']

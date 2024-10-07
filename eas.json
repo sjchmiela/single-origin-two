@@ -33,7 +33,8 @@
     "development-simulator": {
       "developmentClient": true,
       "android": {
-        "image": "latest"
+        "image": "latest",
+        "buildType": "apk"
       },
       "ios": {
         "simulator": true,

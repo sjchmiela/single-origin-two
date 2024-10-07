@@ -1,0 +1,5 @@
+appId: com.jonsamp.singleorigintwo
+---
+- launchApp
+- tapOn: 'Aeropress'
+- assertVisible: 'How many ounces would you like your brew to yield?'
