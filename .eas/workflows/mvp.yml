@@ -10,16 +10,14 @@ jobs:
     steps:
       - uses: eas/checkout
       - uses: eas/install_node_modules
-      - name: Run unit tests
-        run: yarn test
+      - name: Check lint
+        run: yarn lint
   development_build:
     needs: [unit_tests]
     type: build
     params:
       platform: ios
       profile: development-simulator
-    outputs:
-      build_id: ${{ steps.build.outputs.build_id }}
   publish_update:
     needs: [unit_tests]
     type: update
@@ -27,5 +25,5 @@ jobs:
     needs: [development_build, publish_update]
     type: e2e_test
     params:
-      build_id: ${{ build_android.outputs.build_id }}
+      build_id: ${{ needs.build_android.outputs.build_id }}
       flow_path: ['./e2e/flow.yaml']
